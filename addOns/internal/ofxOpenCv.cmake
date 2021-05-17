@@ -14,7 +14,7 @@ file(   GLOB_RECURSE
 include_directories(
         "${OF_DIRECTORY_ABSOLUTE}/addons/ofxOpenCv/src"
         "${OF_DIRECTORY_ABSOLUTE}/addons/ofxOpenCv/libs/opencv/include"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxOpenCv/libs/opencv/include/opencv"
+        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxOpenCv/libs/opencv/include/opencv4"
         )
 
 # -----------------------------------------------------------------
