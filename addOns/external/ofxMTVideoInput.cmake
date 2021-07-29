@@ -15,6 +15,8 @@ file(   GLOB_RECURSE
 # -----------------------------------------------------------------
 
 include_directories(    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxMTVideoInput/src" )
+include_directories(    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxMTVideoInput/src/inputSources" )
+include_directories(    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxMTVideoInput/src/processes" )
 
 # -----------------------------------------------------------------
 # --- Set the keyword, so you can simply include the addOn
