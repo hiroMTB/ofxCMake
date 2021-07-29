@@ -8,7 +8,7 @@
 #
 # =================================================================
 
-set( NAME_ADDON     ofxParameterServer )       # <--- Set the name here
+set( NAME_ADDON     ofxRemoteParameters )       # <--- Set the name here
 
 #==================================================================
 
