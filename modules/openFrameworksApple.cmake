@@ -43,7 +43,7 @@ list(APPEND OF_CORE_HEADERS
 # ============================================================================
 # --------------------------------- Libraries --------------------------------
 set(LIB_GLUT "${OF_DIRECTORY_ABSOLUTE}/libs/glut/lib/osx/GLUT.framework")
-set(LIB_FMODEX ${OF_DIRECTORY_ABSOLUTE}/libs/fmodex/lib/osx/libfmodex.dylib)
+set(LIB_FMODEX ${OF_DIRECTORY_ABSOLUTE}/libs/fmod/lib/osx/libfmod.dylib)
 set(LIB_GLFW ${OF_DIRECTORY_ABSOLUTE}/libs/glfw/lib/osx/glfw3.a)
 set(LIB_FREEIMAGE ${OF_DIRECTORY_ABSOLUTE}/libs/FreeImage/lib/osx/freeimage.a)
 set(LIB_FREETYPE ${OF_DIRECTORY_ABSOLUTE}/libs/freetype/lib/osx/freetype.a)
@@ -76,7 +76,7 @@ set(OF_CORE_LIBS
     )
 # ============================================================================
 # ----------------------------- System Frameworks ----------------------------
-set(FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks)
+set(FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks)
 
 find_library(accelerate_lib Accelerate)
 find_library(iokit_lib IOKit)
