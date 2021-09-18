@@ -63,5 +63,5 @@ if (APPLE)
     #    set(${USER_LIBS})
 endif ()
 
-message(${USER_LIBS})
-#target_link_libraries(${APP_NAME} ${EXTRA_LIBS_MTLRS})
+# message(${USER_LIBS})
+target_link_libraries(${NAME_ADDON} ${EXTRA_LIBS_MTLRS})
