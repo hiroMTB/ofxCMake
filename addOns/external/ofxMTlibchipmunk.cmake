@@ -8,7 +8,7 @@
 #
 # =================================================================
 
-set(NAME_ADDON ofxMTlibrealsense)       # <--- Set the name here
+set(NAME_ADDON ofxMTlibchipmunk)       # <--- Set the name here
 
 #==================================================================
 
@@ -35,7 +35,7 @@ add_library(${NAME_ADDON} STATIC ${OFX_ADDON_CPP})
 # include_directories( ${HEADERS_SOURCE} )
 
 # OF_find_header_directories(HEADERS_LIBS ${PATH_LIBS})
-include_directories(${PATH_LIBS}/librealsense2/include)
+include_directories(${PATH_LIBS}/libchipmunk/include)
 
 # -----------------------------------------------------------------
 # ------------------------------ LIBS  ----------------------------
@@ -47,21 +47,11 @@ include_directories(${PATH_LIBS}/librealsense2/include)
 # -----------------------------------------------------------------
 
 if (APPLE)
-    set(lrs2 "${PATH_LIBS}/librealsense2/lib/osx/librealsense2.a")
-    set(lrs2-gl "${PATH_LIBS}/librealsense2/lib/osx/librealsense2-gl.a")
-    set(lrs-file "${PATH_LIBS}/librealsense2/lib/osx/librealsense-file.a")
-
-    set(EXTRA_LIBS_MTLRS
-        ${lrs2}
-        ${lrs2-gl}
-        ${lrs-file}
-        "${PATH_LIBS}/librealsense2/lib/osx/usb-1.0.0.a"
-        "${PATH_LIBS}/librealsense2/lib/osx/libfw.a"
-        )
-
-    list(APPEND USER_LIBS ${EXTRA_LIBS_MTLRS})
+    set(LIBS_CHIPMUNK "${PATH_LIBS}/libchipmunk/lib/osx/libChipmunk-Mac.a")
     #    set(${USER_LIBS})
 endif ()
 
 # message(${USER_LIBS})
-target_link_libraries(${NAME_ADDON} ${EXTRA_LIBS_MTLRS})
+target_link_libraries(  ${NAME_ADDON} ${LIBS_CHIPMUNK} )
+
+#target_link_libraries(${APP_NAME} ${EXTRA_LIBS_MTLRS})

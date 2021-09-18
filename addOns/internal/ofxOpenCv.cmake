@@ -33,8 +33,11 @@ add_library(    ofxOpenCv
 if( APPLE )
     find_library( CORE_FOUNDATION_LIB_OPENCV  CoreFoundation)
     find_library( ZLIB_OPENCV z )
-
-    set(    ofxOpenCvLib "${OF_DIRECTORY_ABSOLUTE}/addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a" )
+    file (
+      GLOB_RECURSE
+      ofxOpenCvLib
+      "${OF_DIRECTORY_ABSOLUTE}/addons/ofxOpenCv/libs/opencv/lib/osx/*.a"
+    )
     set(    EXTRA_LIBS_OPENCV
             ${CORE_FOUNDATION_LIB_OPENCV}
             ${ZLIB_OPENCV}
