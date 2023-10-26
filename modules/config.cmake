@@ -43,7 +43,7 @@ install(TARGETS of_static
 # LIBRARY DESTINATION ${OF_CMAKE_LIBS}/${CMAKE_BUILD_TYPE}
 # ARCHIVE DESTINATION ${OF_CMAKE_LIBS}/${CMAKE_BUILD_TYPE})
 
-#set_target_properties( of_shared
+# set_target_properties( of_shared
 #        PROPERTIES
 #        LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${APP_NAME}.app/Contents/Frameworks
 #        )

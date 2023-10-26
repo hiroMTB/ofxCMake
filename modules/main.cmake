@@ -12,6 +12,9 @@ set(OF_CMAKE_MODULES ${OF_DIRECTORY_ABSOLUTE}/${CMAKE_PATH_NAME}/modules)
 set(OF_CMAKE_ADDONS ${OF_DIRECTORY_ABSOLUTE}/${CMAKE_PATH_NAME}/addOns)
 set(OF_CMAKE_LIBS ${OF_DIRECTORY_ABSOLUTE}/${CMAKE_PATH_NAME}/libs)
 
+set(CMAKE_MODULE_PATH
+  "${CMAKE_MODULE_PATH}"
+  "${OF_CMAKE_MODULES}" )
 
 # ============================================================================
 # --------------------------------- ADDONS -----------------------------------

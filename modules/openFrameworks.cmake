@@ -9,6 +9,7 @@
 #set( OF_SOURCE_FILES
 #     ${OF_SRC} )
 set(OF_SOURCE_FILES
+    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/ofMain.h
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/3d/of3dPrimitives.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/3d/of3dUtils.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/3d/ofCamera.cpp
@@ -24,6 +25,7 @@ set(OF_SOURCE_FILES
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/communication/ofSerial.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/events/ofEvents.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofBufferObject.cpp
+    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofCubeMap.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofFbo.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofGLProgrammableRenderer.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofGLRenderer.cpp
@@ -31,6 +33,7 @@ set(OF_SOURCE_FILES
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofLight.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofMaterial.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofShader.cpp
+    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofShadow.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofTexture.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofVbo.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/gl/ofVboMesh.cpp
