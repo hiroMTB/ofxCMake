@@ -8,7 +8,7 @@
 #
 # =================================================================
 
-set( NAME_ADDON     ofxImGui )       # <--- Set the name here
+set( NAME_ADDON     ofxObjLoader )       # <--- Set the name here
 
 #==================================================================
 
@@ -18,14 +18,13 @@ set( NAME_ADDON     ofxImGui )       # <--- Set the name here
 # -----------------------------------------------------------------
 set( PATH_SRC    ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/src )
 set( PATH_LIBS      ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/libs )
-set( PATH_IMGUI_BACKENDS ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/libs/imgui )
 
 # -----------------------------------------------------------------
 # ---------------------------- SOURCE -----------------------------
 # -----------------------------------------------------------------
 
 file( GLOB_RECURSE   OFX_ADDON_CPP          "${PATH_SRC}/*.cpp" )
-file( GLOB_RECURSE   OFX_ADDON_LIBS_CPP     "${PATH_LIBS}/*.cpp" )
+file( GLOB_RECURSE   OFX_ADDON_LIBS_CPP     "${PATH_LIBS}/*.c" )
 add_library(  ${NAME_ADDON}   STATIC   ${OFX_ADDON_CPP} ${OFX_ADDON_LIBS_CPP} )
 
 # -----------------------------------------------------------------
@@ -37,4 +36,3 @@ OF_find_header_directories( HEADERS_LIBS ${PATH_LIBS} )
 
 include_directories( ${HEADERS_SOURCE} )
 include_directories( ${HEADERS_LIBS} )
-include_directories( ${PATH_LIBS}/imgui ) # Include the backend headers
