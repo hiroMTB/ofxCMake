@@ -59,6 +59,7 @@ set(OF_SOURCE_FILES
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/sound/ofOpenALSoundPlayer.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/sound/ofSoundBuffer.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/sound/ofSoundPlayer.cpp
+    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/sound/ofSoundBaseTypes.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/types/ofBaseTypes.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/types/ofColor.cpp
     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/types/ofParameter.cpp
