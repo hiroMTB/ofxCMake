@@ -16,8 +16,8 @@ set( NAME_ADDON     ofxPDSP )       # <--- Set the name here
 # -----------------------------------------------------------------
 # ---------------------------- PATHS ------------------------------
 # -----------------------------------------------------------------
-set( PATH_SRC    ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/src )
-set( PATH_LIBS      ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/libs )
+set( PATH_SRC    ${ADDON_DIR}/${NAME_ADDON}/src )
+set( PATH_LIBS      ${ADDON_DIR}/${NAME_ADDON}/libs )
 
 # -----------------------------------------------------------------
 # ---------------------------- SOURCE -----------------------------

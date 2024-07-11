@@ -1,0 +1,6 @@
+set( PATH_SRC       ${ADDON_DIR}/ofxCereal/src )
+set( PATH_CEREAL    ${ADDON_DIR}/ofxCereal/libs/cereal/include )
+if( NOT ${IMPORT_ADDON} )
+    include_directories( ${PATH_CEREAL} )
+    include_directories( ${PATH_SRC} )
+endif()

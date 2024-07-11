@@ -4,14 +4,14 @@
 
 file(   GLOB_RECURSE
         OFX_MTTOOLS_CPP
-        "${OF_DIRECTORY_ABSOLUTE}/addons/MTTools/src/*.cpp"
+        "${ADDON_DIR}/MTTools/src/*.cpp"
         )
 
 # -----------------------------------------------------------------
 # --- Set ALL directories of the addOn, which contain .h files
 # -----------------------------------------------------------------
 
-include_directories(    "${OF_DIRECTORY_ABSOLUTE}/addons/MTTools/src" )
+include_directories(    "${ADDON_DIR}/MTTools/src" )
 
 # -----------------------------------------------------------------
 # --- Set the keyword, so you can simply include the addOn

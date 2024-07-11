@@ -4,14 +4,14 @@
 
 file(   GLOB_RECURSE
         OFX_OFXMTAPPFRAMEWORK_CPP
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxMTAppFramework/src/*.cpp"
+        "${ADDON_DIR}/ofxMTAppFramework/src/*.cpp"
         )
 
 # -----------------------------------------------------------------
 # --- Set ALL directories of the addOn, which contain .h files
 # -----------------------------------------------------------------
 
-include_directories(    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxMTAppFramework/src" )
+include_directories(    "${ADDON_DIR}/ofxMTAppFramework/src" )
 
 # -----------------------------------------------------------------
 # --- Set the keyword, so you can simply include the addOn

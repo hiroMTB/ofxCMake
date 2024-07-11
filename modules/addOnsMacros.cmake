@@ -1,3 +1,4 @@
+
 #==================================================================
 # ---- activate INTERNAL addOn
 macro( OF_include_internal_addOn NAME_ADDON )
@@ -6,7 +7,7 @@ macro( OF_include_internal_addOn NAME_ADDON )
             include( ${OF_CMAKE_ADDONS}/internal/${NAME_ADDON}.cmake )
             message( STATUS "${NAME_ADDON} activated" )
         else()
-            message( WARNING "${NAME_ADDON} folder not found" )
+            message( WARNING "${NAME_ADDON} folder not found [${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}]" )
         endif()
     endif()
 endmacro( OF_include_internal_addOn )

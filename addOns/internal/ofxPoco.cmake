@@ -1,12 +1,3 @@
-# =================================================================
-#
-# Template for addOns WITH pre compiled libraries
-#
-# Easiest way: replace all the NAME into the name of your addOn
-# It has to have the same name, as the directory it is in
-# [e.g. ofxOneEuroFilter is in of/addons/ofxOneEuroFilter/]
-#
-# =================================================================
 
 set( NAME_ADDON     ofxPoco )       # <--- Set the name here
 
@@ -16,8 +7,8 @@ set( NAME_ADDON     ofxPoco )       # <--- Set the name here
 # -----------------------------------------------------------------
 # ---------------------------- PATHS ------------------------------
 # -----------------------------------------------------------------
-set( PATH_SRC    ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/src )
-set( PATH_LIBS      ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/libs )
+set( PATH_SRC    ${ADDON_DIR}/${NAME_ADDON}/src )
+set( PATH_LIBS      ${ADDON_DIR}/${NAME_ADDON}/libs )
 
 # -----------------------------------------------------------------
 # ---------------------------- SOURCE -----------------------------
@@ -49,18 +40,18 @@ include_directories( "${PATH_LIBS}/poco/include" )
 # -----------------------------------------------------------------
 
 if( APPLE )
-	set(openSSL1 "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/openssl/lib/osx/crypto.a" )
-	set(openSSL2 "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/openssl/lib/osx/ssl.a" )
+	set(openSSL1 "${ADDON_DIR}/ofxPoco/libs/openssl/lib/osx/crypto.a" )
+	set(openSSL2 "${ADDON_DIR}/ofxPoco/libs/openssl/lib/osx/ssl.a" )
 
-	set( poco1    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/openssl/lib/osx/crypto.a" )
-    set( poco2    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/openssl/lib/osx/ssl.a" )
-    set( poco3    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/poco/lib/osx/PocoCrypto.a" )
-    set( poco4    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/poco/lib/osx/PocoFoundation.a" )
-    set( poco5    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/poco/lib/osx/PocoJSON.a" )
-    set( poco6    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/poco/lib/osx/PocoNet.a" )
-    set( poco7    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/poco/lib/osx/PocoNetSSL.a" )
-    set( poco8    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/poco/lib/osx/PocoXML.a" )
-    set( poco9    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxPoco/libs/poco/lib/osx/PocoZip.a" )
+	set( poco1    "${ADDON_DIR}/ofxPoco/libs/openssl/lib/osx/crypto.a" )
+    set( poco2    "${ADDON_DIR}/ofxPoco/libs/openssl/lib/osx/ssl.a" )
+    set( poco3    "${ADDON_DIR}/ofxPoco/libs/poco/lib/osx/PocoCrypto.a" )
+    set( poco4    "${ADDON_DIR}/ofxPoco/libs/poco/lib/osx/PocoFoundation.a" )
+    set( poco5    "${ADDON_DIR}/ofxPoco/libs/poco/lib/osx/PocoJSON.a" )
+    set( poco6    "${ADDON_DIR}/ofxPoco/libs/poco/lib/osx/PocoNet.a" )
+    set( poco7    "${ADDON_DIR}/ofxPoco/libs/poco/lib/osx/PocoNetSSL.a" )
+    set( poco8    "${ADDON_DIR}/ofxPoco/libs/poco/lib/osx/PocoXML.a" )
+    set( poco9    "${ADDON_DIR}/ofxPoco/libs/poco/lib/osx/PocoZip.a" )
 #    find_library( CORE_FOUNDATION_LIB_${NAME_ADDON}  CoreFoundation)
 #    set( compiledLib    "${OF_CMAKE_ADDONS}/${NAME_ADDON}/lib/myLib.a" )
    set(    EXTRA_LIBS_ofxPoco

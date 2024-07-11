@@ -4,7 +4,8 @@
 
 file(   GLOB_RECURSE
         OFX_SVG_CPP
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxSvg/*.cpp"
+        "${ADDON_DIR}/ofxSvg/*.cpp"
+        "${ADDON_DIR}/ofxSvg/libs/svgtiny/src/*.cpp"
         )
 
 # -----------------------------------------------------------------
@@ -12,8 +13,9 @@ file(   GLOB_RECURSE
 # -----------------------------------------------------------------
 
 include_directories(
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxSvg/src"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxSvg/libs/svgTiny/src"
+        "${ADDON_DIR}/ofxSvg/src"
+        "${ADDON_DIR}/ofxSvg/libs/svgtiny/include"
+        "${ADDON_DIR}/ofxSvg/libs/libxlm2/include"
         )
 
 # -----------------------------------------------------------------
@@ -23,12 +25,25 @@ include_directories(
 add_library(    ofxSvg
                 STATIC
                 ${OFX_SVG_CPP} )
-
+                
 # -----------------------------------------------------------------
 # --- Setting a compiled lib
 # -----------------------------------------------------------------
 
-set(    EXTRA_LIBS_SVG
-        ${OF_DIRECTORY_ABSOLUTE}/libs/poco/lib/osx/PocoXML.a)
+if( APPLE )
 
-target_link_libraries(  ofxSvg ${EXTRA_LIBS_SVG} )
+ 	set(    EXTRA_LIBS_SVG
+	        ${ADDON_DIR}/ofxSvg/libs/svgtiny/lib/osx/svgtiny.a
+	        ${ADDON_DIR}/ofxSvg/libs/libxml2/lib/osx/xml2.a
+		)
+ 	target_link_libraries(  ofxSvg ${EXTRA_LIBS_SVG} )
+
+elseif( UNIX )
+
+	set(    EXTRA_LIBS_SVG
+	        ${ADDON_DIR}/ofxSvg/libs/svgtiny/lib/linux64/libsvgtiny.a
+	        ${ADDON_DIR}/ofxSvg/libs/libxml2/lib/linux64/libxml2.a
+	        )
+	target_link_libraries(  ofxSvg ${EXTRA_LIBS_SVG} )	
+
+endif()

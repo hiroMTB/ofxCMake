@@ -1,12 +1,3 @@
-# =================================================================
-#
-# Template for addOns WITH pre compiled libraries
-#
-# Easiest way: replace all the NAME into the name of your addOn
-# It has to have the same name, as the directory it is in
-# [e.g. ofxOneEuroFilter is in of/addons/ofxOneEuroFilter/]
-#
-# =================================================================
 
 set( NAME_ADDON     ofxNAME )       # <--- Set the name here
 
@@ -16,8 +7,8 @@ set( NAME_ADDON     ofxNAME )       # <--- Set the name here
 # -----------------------------------------------------------------
 # ---------------------------- PATHS ------------------------------
 # -----------------------------------------------------------------
-set( PATH_SRC    ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/src )
-set( PATH_LIBS      ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/libs )
+set( PATH_SRC    ${ADDON_DIR}/${NAME_ADDON}/src )
+set( PATH_LIBS      ${ADDON_DIR}/${NAME_ADDON}/libs )
 
 # -----------------------------------------------------------------
 # ---------------------------- SOURCE -----------------------------

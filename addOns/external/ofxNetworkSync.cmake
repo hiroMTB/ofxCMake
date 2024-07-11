@@ -4,14 +4,14 @@
 
 file(   GLOB_RECURSE
         OFX_NETWORK_SYNC_CPP
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxNetworkSync/src/*.cpp"
+        "${ADDON_DIR}/ofxNetworkSync/src/*.cpp"
         )
 
 # -----------------------------------------------------------------
 # --- Set ALL directories of the addOn, which contain .h files
 # -----------------------------------------------------------------
 
-include_directories( "${OF_DIRECTORY_ABSOLUTE}/addons/ofxNetworkSync/src" )
+include_directories( "${ADDON_DIR}/ofxNetworkSync/src" )
 
 # -----------------------------------------------------------------
 # --- Set the keyword, so you can simply include the addOn

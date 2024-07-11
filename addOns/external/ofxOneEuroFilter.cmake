@@ -4,14 +4,14 @@
 
 file(   GLOB_RECURSE
         OFX_ONEEUROFILTER_CPP
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxOneEuroFilter/src/*.cpp"
+        "${ADDON_DIR}/ofxOneEuroFilter/src/*.cpp"
         )
 
 # -----------------------------------------------------------------
 # --- Set ALL directories of the addOn, which contain .h files
 # -----------------------------------------------------------------
 
-include_directories(    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxOneEuroFilter/src" )
+include_directories(    "${ADDON_DIR}/ofxOneEuroFilter/src" )
 
 # -----------------------------------------------------------------
 # --- Set the keyword, so you can simply include the addOn

@@ -5,11 +5,11 @@
 set(CMAKE_C_FLAGS "") # -x objective-c
 
 # set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
-set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++ -D__MACOSX_CORE__") # Removed "-stdlib=libstdc++
+set(CMAKE_CXX_FLAGS "-std=c++17 -stdlib=libc++ -D__MACOSX_CORE__") # Removed "-stdlib=libstdc++
 set_source_files_properties(${OF_SOURCE_FILES} PROPERTIES COMPILE_FLAGS "-x objective-c++")
 
 #set(CMAKE_OSX_ARCHITECTURES i386)
-# set(CMAKE_OSX_ARCHITECTURES x86_64)
+set(CMAKE_OSX_ARCHITECTURES x86_64)
 add_compile_options(-Wno-deprecated-declarations)
 
 find_program(CCACHE_FOUND ccache)
@@ -24,13 +24,13 @@ endif(CCACHE_FOUND)
 add_executable(${APP_NAME} MACOSX_BUNDLE ${${APP_NAME}_SOURCE_FILES})
 
 target_link_libraries(${APP_NAME}
-                      ${OF_CORE_LIBS}
-                      of_static
-                      #        ${opengl_lib}
-                      ${OF_CORE_FRAMEWORKS}
-                      ${USER_LIBS}
-                      ${OFX_ADDONS_ACTIVE}
-                      )
+              ${OF_CORE_LIBS}
+              of_static
+              #        ${opengl_lib}
+              ${OF_CORE_FRAMEWORKS}
+              ${USER_LIBS}
+              ${OFX_ADDONS_ACTIVE}
+              )
 
 # ============================================================================
 

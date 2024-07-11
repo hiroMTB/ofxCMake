@@ -9,8 +9,8 @@ set( NAME_ADDON     ofxIO )
 # -----------------------------------------------------------------
 # ---------------------------- PATHS ------------------------------
 # -----------------------------------------------------------------
-set( PATH_SOURCE    ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/src )
-set( PATH_LIBS      ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/libs )
+set( PATH_SOURCE    ${ADDON_DIR}/${NAME_ADDON}/src )
+set( PATH_LIBS      ${ADDON_DIR}/${NAME_ADDON}/libs )
 
 # --- Setting abolute path to prevent errors
 get_filename_component( PATH_SOURCE_ABSOLUTE ${PATH_SOURCE} ABSOLUTE)
@@ -33,12 +33,12 @@ add_library(  ${NAME_ADDON}   STATIC
 # -----------------------------------------------------------------
 
 include_directories(
-        ${OF_DIRECTORY_ABSOLUTE}/addons/ofxIO/src
-        ${OF_DIRECTORY_ABSOLUTE}/addons/ofxIO/libs/alphanum/include
-        ${OF_DIRECTORY_ABSOLUTE}/addons/ofxIO/libs/brotli/src
-        ${OF_DIRECTORY_ABSOLUTE}/addons/ofxIO/libs/lz4/src
-        ${OF_DIRECTORY_ABSOLUTE}/addons/ofxIO/libs/ofxIO/include
-        ${OF_DIRECTORY_ABSOLUTE}/addons/ofxIO/libs/snappy/src )
+        ${ADDON_DIR}/ofxIO/src
+        ${ADDON_DIR}/ofxIO/libs/alphanum/include
+        ${ADDON_DIR}/ofxIO/libs/brotli/src
+        ${ADDON_DIR}/ofxIO/libs/lz4/src
+        ${ADDON_DIR}/ofxIO/libs/ofxIO/include
+        ${ADDON_DIR}/ofxIO/libs/snappy/src )
 
 
 # -----------------------------------------------------------------

@@ -4,14 +4,14 @@
 
 file(   GLOB_RECURSE
         OFX_THREADEDIMAGELOADER_CPP
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxThreadedImageLoader/*.cpp"
+        "${ADDON_DIR}/ofxThreadedImageLoader/*.cpp"
         )
 
 # -----------------------------------------------------------------
 # --- Set ALL directories of the addOn, which contain .h files
 # -----------------------------------------------------------------
 
-include_directories(    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxThreadedImageLoader/src" )
+include_directories(    "${ADDON_DIR}/ofxThreadedImageLoader/src" )
 
 # -----------------------------------------------------------------
 # --- Set the keyword, so you can simply include the addOn

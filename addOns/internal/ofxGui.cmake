@@ -4,14 +4,14 @@
 
 file(   GLOB_RECURSE
         OFX_GUI_CPP
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxGui/*.cpp"
+        "${ADDON_DIR}/ofxGui/*.cpp"
         )
 
 # -----------------------------------------------------------------
 # --- Set ALL directories of the addOn, which contain .h files
 # -----------------------------------------------------------------
 
-include_directories(    "${OF_DIRECTORY_ABSOLUTE}/addons/ofxGui/src" )
+include_directories(    "${ADDON_DIR}/ofxGui/src" )
 
 # -----------------------------------------------------------------
 # --- Set the keyword, so you can simply include the addOn

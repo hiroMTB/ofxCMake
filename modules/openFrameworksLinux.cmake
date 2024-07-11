@@ -10,25 +10,21 @@ list( APPEND OF_SOURCE_FILES
 # --------------------------- Include Folders --------------------------------
 
 # ------------------ Putting the includes into one list ----------------------
-list( APPEND OF_CORE_HEADERS ${OF_DIRECTORY_ABSOLUTE}/libs/kiss/include)
+#list( APPEND OF_CORE_HEADERS ${OF_DIRECTORY_ABSOLUTE}/libs/kiss/include)
+
 
 # ============================================================================
 # ------------------------------ Libraries -----------------------------------
 
 # ---- shared
-set( LIB_FMODEX ${OF_DIRECTORY_ABSOLUTE}/libs/fmodex/lib/linux64/libfmodex.so )
+# nono commented this:
+# set( LIB_FMODEX ${OF_DIRECTORY_ABSOLUTE}/libs/fmodex/lib/linux64/libfmodex.so )
 
-set( OF_CORE_LIBS
-        #${OF_DIRECTORY_ABSOLUTE}/libs/glfw/lib/linux64/libglfw3.a
-        ${OF_DIRECTORY_ABSOLUTE}/libs/kiss/lib/linux64/libkiss.a
-        ${OF_DIRECTORY_ABSOLUTE}/libs/poco/lib/linux64/libPocoCrypto.a
-        ${OF_DIRECTORY_ABSOLUTE}/libs/poco/lib/linux64/libPocoFoundation.a
-        ${OF_DIRECTORY_ABSOLUTE}/libs/poco/lib/linux64/libPocoNet.a
-        ${OF_DIRECTORY_ABSOLUTE}/libs/poco/lib/linux64/libPocoNetSSL.a
-        ${OF_DIRECTORY_ABSOLUTE}/libs/poco/lib/linux64/libPocoUtil.a
-        ${OF_DIRECTORY_ABSOLUTE}/libs/poco/lib/linux64/libPocoXML.a
-        ${OF_DIRECTORY_ABSOLUTE}/libs/poco/lib/linux64/libPocoJSON.a
+# ---- static
+set( OF_CORE_STATIC_LIBS
+        ${OF_CORE_LIBS}
         ${OF_DIRECTORY_ABSOLUTE}/libs/tess2/lib/linux64/libtess2.a
+        ${OF_DIRECTORY_ABSOLUTE}/libs/kiss/lib/linux64/libkiss.a
         )
 
 # ============================================================================
@@ -39,8 +35,11 @@ set(CMAKE_MODULE_PATH
 
 find_package(PkgConfig REQUIRED)
 find_package(GStreamer REQUIRED)
+find_package(Boost REQUIRED filesystem system)
+find_package(Threads REQUIRED)
+#find_package(RtAudio REQUIRED)
 
-
+find_library(opengl_lib OpenGL)
 
 PKG_SEARCH_MODULE( ALSA "REQUIRED" alsa )
 PKG_SEARCH_MODULE( CAIRO "REQUIRED" cairo )
@@ -52,7 +51,7 @@ include_directories( ${ALSA_INCLUDE_DIRS} )
 include_directories( ${GSTREAMER_APP_INCLUDE_DIRS} )
 include_directories( ${GSTREAMER_BASE_INCLUDE_DIRS} )
 include_directories( ${GSTREAMER_VIDEO_INCLUDE_DIRS} )
-
+#include_directories( ${RTAUDIO_INCLUDE_DIRS} )
 
 set( OF_CORE_FRAMEWORKS
         z
@@ -66,7 +65,7 @@ set( OF_CORE_FRAMEWORKS
         sndfile
         openal
         ssl
-        crypto
+#        crypto
         pulse-simple
         pulse
         asound
@@ -78,13 +77,13 @@ set( OF_CORE_FRAMEWORKS
         cairo-gobject
         pango-1.0
         cairo
-        gtk-3
-        gdk-3
-        atk-1.0
+#        gtk-3
+#        gdk-3
+#        atk-1.0
         gio-2.0
         gobject-2.0
         glib-2.0
-        mpg123
+#        mpg123
         glut
         X11
         Xrandr
@@ -102,5 +101,7 @@ set( OF_CORE_FRAMEWORKS
         glfw
         curl
         uriparser
+        rtaudio
+        stdc++fs
         ${LIB_FMODEX}       # SHARED
         )

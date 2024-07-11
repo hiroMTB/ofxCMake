@@ -1,39 +1,23 @@
-# -----------------------------------------------------------------
-# --- Set the name of your AddOn
-# -----------------------------------------------------------------
+set( NAME_ADDON     ofxFFmpegRecorder ) 
 
-set( NAME_ADDON     ofxFFmpegRecorder )
-
-#==================================================================
-#==================================================================
 # -----------------------------------------------------------------
 # ---------------------------- PATHS ------------------------------
 # -----------------------------------------------------------------
-set( PATH_SOURCE    ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/src )
-# set( PATH_LIBS      ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/libs )
-
-# --- Setting abolute path to prevent errors
-get_filename_component( PATH_SOURCE_ABSOLUTE ${PATH_SOURCE} ABSOLUTE)
-# get_filename_component( PATH_LIBS_ABSOLUTE ${PATH_LIBS} ABSOLUTE)
+set( PATH_SRC    ${ADDON_DIR}/${NAME_ADDON}/src )
 
 # -----------------------------------------------------------------
 # ---------------------------- SOURCE -----------------------------
 # -----------------------------------------------------------------
 
-file( GLOB_RECURSE   OFX_ADDON_CPP          "${PATH_SOURCE_ABSOLUTE}/*.cpp" )
-# file( GLOB_RECURSE   OFX_ADDON_LIBS_CPP     "${PATH_LIBS_ABSOLUTE}/*.cpp" )
-add_library(  ${NAME_ADDON}   STATIC   ${OFX_ADDON_CPP} ${OFX_ADDON_LIBS_CPP} )
+# ! important that it is .c** to include cxx files. !
+file( GLOB_RECURSE   OFX_ADDON_CPP          "${PATH_SRC}/*.c**" )
+add_library(  ${NAME_ADDON}   STATIC   ${OFX_ADDON_CPP} )
 
 # -----------------------------------------------------------------
 # ---------------------------- HEADERS ----------------------------
 # -----------------------------------------------------------------
 
-OF_find_header_directories( HEADERS_SOURCE ${PATH_SOURCE_ABSOLUTE} )
+OF_find_header_directories( HEADERS_SOURCE ${PATH_SRC} )
+
 include_directories( ${HEADERS_SOURCE} )
 
-# OF_find_header_directories( HEADERS_LIBS ${PATH_LIBS_ABSOLUTE} )
-# include_directories( ${HEADERS_LIBS} )
-
-# -----------------------------------------------------------------
-# ------------------------------ LIBS  ----------------------------
-# -----------------------------------------------------------------

@@ -5,12 +5,12 @@ list(APPEND OF_SOURCE_FILES
      ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/sound/ofSoundStream.cpp
      ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofAVFoundationVideoPlayer.m
      ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofAVFoundationPlayer.mm
- #    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQTKitGrabber.mm
- #    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQTKitMovieRenderer.m
- #    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQTKitPlayer.mm
- #    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQtUtils.cpp
- #    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQuickTimeGrabber.cpp
- #    ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQuickTimePlayer.cpp
+#     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQTKitGrabber.mm
+#     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQTKitMovieRenderer.m
+#     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQTKitPlayer.mm
+#     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQtUtils.cpp
+#     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQuickTimeGrabber.cpp
+#     ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/video/ofQuickTimePlayer.cpp
      ${OF_DIRECTORY_ABSOLUTE}/libs/openFrameworks/sound/ofRtAudioSoundStream.cpp
      )
 
@@ -28,7 +28,7 @@ set(HEADER_GLEW ${OF_DIRECTORY_ABSOLUTE}/libs/glew/include)
 set(HEADER_CAIRO ${OF_DIRECTORY_ABSOLUTE}/libs/cairo/include/cairo)
 set(HEADER_RTAUDIO ${OF_DIRECTORY_ABSOLUTE}/libs/rtAudio/include)
 set(HEADER_BOOST ${OF_DIRECTORY_ABSOLUTE}/libs/boost/include)
-set(HEADER_CURL ${OF_DIRECTORY_ABSOLUTE}/libs/curl/include)
+# set(HEADER_CURL ${OF_DIRECTORY_ABSOLUTE}/libs/curl/include)
 
 # ------------------ Putting the includes into one list ----------------------
 list(APPEND OF_CORE_HEADERS
@@ -37,13 +37,13 @@ list(APPEND OF_CORE_HEADERS
      ${HEADER_CAIRO}
      ${HEADER_RTAUDIO}
      ${HEADER_BOOST}
-     ${HEADER_CURL}
+     # ${HEADER_CURL}
      )
 
 # ============================================================================
 # --------------------------------- Libraries --------------------------------
 set(LIB_GLUT "${OF_DIRECTORY_ABSOLUTE}/libs/glut/lib/osx/GLUT.framework")
-set(LIB_FMODEX ${OF_DIRECTORY_ABSOLUTE}/libs/fmod/lib/osx/libfmod.dylib)
+set(LIB_FMOD ${OF_DIRECTORY_ABSOLUTE}/libs/fmod/lib/osx/libfmod.dylib)
 set(LIB_GLFW ${OF_DIRECTORY_ABSOLUTE}/libs/glfw/lib/osx/glfw3.a)
 set(LIB_FREEIMAGE ${OF_DIRECTORY_ABSOLUTE}/libs/FreeImage/lib/osx/freeimage.a)
 set(LIB_FREETYPE ${OF_DIRECTORY_ABSOLUTE}/libs/freetype/lib/osx/freetype.a)
@@ -58,13 +58,14 @@ set(LIB_BOOST_2 ${OF_DIRECTORY_ABSOLUTE}/libs/boost/lib/osx/boost_filesystem.a)
 set(LIB_BOOST_3 ${OF_DIRECTORY_ABSOLUTE}/libs/boost/lib/osx/boost_system.a)
 set(LIB_PUGIXML ${OF_DIRECTORY_ABSOLUTE}/libs/pugixml/lib/osx/pugixml.a)
 set(LIB_URIPARSER ${OF_DIRECTORY_ABSOLUTE}/libs/uriparser/lib/osx/uriparser.a)
-set(LIB_CURL ${OF_DIRECTORY_ABSOLUTE}/libs/curl/lib/osx/curl.a)
+# set(LIB_CURL ${OF_DIRECTORY_ABSOLUTE}/libs/curl/lib/osx/curl.a)
+set(LIB_CURL -lcurl)
 
 set(OF_CORE_LIBS
     ${LIB_TESS}
     ${LIB_GLEW}
     ${LIB_CAIRO1} ${LIB_CAIRO2} ${LIB_CAIRO3} ${LIB_CAIRO}
-    ${LIB_FMODEX}
+    ${LIB_FMOD}
     ${LIB_RTAUDIO}
     ${LIB_GLFW}
     ${LIB_FREEIMAGE}
@@ -76,7 +77,7 @@ set(OF_CORE_LIBS
     )
 # ============================================================================
 # ----------------------------- System Frameworks ----------------------------
-set(FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks)
+set(FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks)
 
 find_library(accelerate_lib Accelerate)
 find_library(iokit_lib IOKit)

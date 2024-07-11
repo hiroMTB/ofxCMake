@@ -4,22 +4,22 @@
 
 file(   GLOB_RECURSE
         OFX_FLOWTOOLS_CPP
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/*.cpp" )
+        "${ADDON_DIR}/ofxFlowTools/src/*.cpp" )
 # -----------------------------------------------------------------
 # --- Set ALL directories of the addOn, which contain .h files
 # -----------------------------------------------------------------
 
 include_directories(
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/drawforces"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/filters"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/fluid"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/mask"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/opticalflow"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/particles"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/splitvelocity"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/tools"
-        "${OF_DIRECTORY_ABSOLUTE}/addons/ofxFlowTools/src/visualisation"
+        "${ADDON_DIR}/ofxFlowTools/src"
+        "${ADDON_DIR}/ofxFlowTools/src/drawforces"
+        "${ADDON_DIR}/ofxFlowTools/src/filters"
+        "${ADDON_DIR}/ofxFlowTools/src/fluid"
+        "${ADDON_DIR}/ofxFlowTools/src/mask"
+        "${ADDON_DIR}/ofxFlowTools/src/opticalflow"
+        "${ADDON_DIR}/ofxFlowTools/src/particles"
+        "${ADDON_DIR}/ofxFlowTools/src/splitvelocity"
+        "${ADDON_DIR}/ofxFlowTools/src/tools"
+        "${ADDON_DIR}/ofxFlowTools/src/visualisation"
 )
 
 # -----------------------------------------------------------------

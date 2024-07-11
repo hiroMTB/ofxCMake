@@ -7,21 +7,18 @@ cmake_policy(SET CMP0057 NEW)
 # ============================================================================
 # --- Set an absolute path name, in case the project used a relative one
 get_filename_component(OF_DIRECTORY_ABSOLUTE ${OF_DIRECTORY_BY_USER} ABSOLUTE)
-set(CMAKE_PATH_NAME addons/ofxCMake)
-set(OF_CMAKE_MODULES ${OF_DIRECTORY_ABSOLUTE}/${CMAKE_PATH_NAME}/modules)
-set(OF_CMAKE_ADDONS ${OF_DIRECTORY_ABSOLUTE}/${CMAKE_PATH_NAME}/addOns)
-set(OF_CMAKE_LIBS ${OF_DIRECTORY_ABSOLUTE}/${CMAKE_PATH_NAME}/libs)
 
-set(CMAKE_MODULE_PATH
-  "${CMAKE_MODULE_PATH}"
-  "${OF_CMAKE_MODULES}" )
+set(OF_CMAKE_MODULES ${OFX_CMAKE_PATH}/modules)
+set(OF_CMAKE_ADDONS ${OFX_CMAKE_PATH}/addOns)
+set(OF_CMAKE_LIBS ${OFX_CMAKE_PATH}/libs)
+
 
 # ============================================================================
-# --------------------------------- ADDONS -----------------------------------
+# --------------------------------- ADDONS -----------------------------------zz
 # --- Include all addOn .cmake files.
 # --- Libs are only linked, if set in the project CMakeLists.txt
 # ============================================================================
-include(${OF_CMAKE_MODULES}/addOns.cmake)
+#include(${OF_CMAKE_MODULES}/addOns.cmake)
 
 
 # ============================================================================
@@ -40,10 +37,30 @@ else ()
 endif ()
 
 
+if (NOT COMPILE_OF)
+    include_directories( ${OF_CORE_HEADERS} ${OF_ADDON_HEADERS} )
+endif ()
+
+
 # ============================================================================
 # -------------------------------- OF CONFIGURATION --------------------------
 # ============================================================================
-include(${OF_CMAKE_MODULES}/config.cmake)
+if (COMPILE_OF)
+    include(${OF_CMAKE_MODULES}/config.cmake)
+else()
+
+    add_library( of_static STATIC IMPORTED GLOBAL)
+
+    set( LIB_BASE_NAME ${OFX_CMAKE_PATH}/libs/libopenFrameworksStatic)
+    string(CONCAT LIB_DEBUG    ${LIB_BASE_NAME} ${CMAKE_DEBUG_POSTFIX} ${CMAKE_STATIC_LIBRARY_SUFFIX})
+    string(CONCAT LIB_RELEASE  ${LIB_BASE_NAME} ${CMAKE_STATIC_LIBRARY_SUFFIX})
+    set_target_properties(of_static PROPERTIES IMPORTED_LOCATION_DEBUG ${LIB_DEBUG} )
+    set_target_properties(of_static PROPERTIES IMPORTED_LOCATION_RELEASE ${LIB_RELEASE})
+
+#    install( TARGETS of_static
+#            LIBRARY DESTINATION ${OF_CMAKE_LIBS}
+#            ARCHIVE DESTINATION ${OF_CMAKE_LIBS})
+endif ()
 
 if (APPLE)
     include(${OF_CMAKE_MODULES}/configApple.cmake)
@@ -56,10 +73,13 @@ else ()
 endif ()
 
 
+
 # ============================================================================
 # ------------------------------- APP CONFIGURATION --------------------------
 # ============================================================================
-#add_dependencies( ${APP_NAME} of_shared )
+
+add_dependencies( ${APP_NAME} of_static )
+
 set(OUTPUT_APP_NAME ${APP_NAME})
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
@@ -71,3 +91,5 @@ set_target_properties(${APP_NAME}
                       RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
                       OUTPUT_NAME ${OUTPUT_APP_NAME}
                       )
+
+set_target_properties( ${APP_NAME} PROPERTIES COMPILE_FLAGS "-std=c++17" )

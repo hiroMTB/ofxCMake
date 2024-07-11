@@ -9,8 +9,8 @@ set( NAME_ADDON     ofxQuadWarp )
 # -----------------------------------------------------------------
 # ---------------------------- PATHS ------------------------------
 # -----------------------------------------------------------------
-set( PATH_SOURCE    ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/src )
-set( PATH_LIBS      ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/libs )
+set( PATH_SOURCE    ${ADDON_DIR}/${NAME_ADDON}/src )
+set( PATH_LIBS      ${ADDON_DIR}/${NAME_ADDON}/libs )
 
 # --- Setting abolute path to prevent errors
 get_filename_component( PATH_SOURCE_ABSOLUTE ${PATH_SOURCE} ABSOLUTE)

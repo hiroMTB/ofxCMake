@@ -1,39 +1,25 @@
-# -----------------------------------------------------------------
-# --- Set the name of your AddOn
-# -----------------------------------------------------------------
-
 set( NAME_ADDON     ofxCameraSaveLoad )
 
-#==================================================================
-#==================================================================
 # -----------------------------------------------------------------
 # ---------------------------- PATHS ------------------------------
 # -----------------------------------------------------------------
-set( PATH_SOURCE    ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/src )
-# set( PATH_LIBS      ${OF_DIRECTORY_ABSOLUTE}/addons/${NAME_ADDON}/libs )
-
-# --- Setting abolute path to prevent errors
-get_filename_component( PATH_SOURCE_ABSOLUTE ${PATH_SOURCE} ABSOLUTE)
-# get_filename_component( PATH_LIBS_ABSOLUTE ${PATH_LIBS} ABSOLUTE)
+set( PATH_SRC    ${ADDON_DIR}/${NAME_ADDON}/src )
+set( PATH_LIBS      ${ADDON_DIR}/${NAME_ADDON}/libs )
 
 # -----------------------------------------------------------------
 # ---------------------------- SOURCE -----------------------------
 # -----------------------------------------------------------------
 
-file( GLOB_RECURSE   OFX_ADDON_CPP          "${PATH_SOURCE_ABSOLUTE}/*.cpp" )
-# file( GLOB_RECURSE   OFX_ADDON_LIBS_CPP     "${PATH_LIBS_ABSOLUTE}/*.cpp" )
+file( GLOB_RECURSE   OFX_ADDON_CPP          "${PATH_SRC}/*.cpp" )
+file( GLOB_RECURSE   OFX_ADDON_LIBS_CPP     "${PATH_LIBS}/*.cpp" )
 add_library(  ${NAME_ADDON}   STATIC   ${OFX_ADDON_CPP} ${OFX_ADDON_LIBS_CPP} )
 
 # -----------------------------------------------------------------
 # ---------------------------- HEADERS ----------------------------
 # -----------------------------------------------------------------
 
-OF_find_header_directories( HEADERS_SOURCE ${PATH_SOURCE_ABSOLUTE} )
+OF_find_header_directories( HEADERS_SOURCE ${PATH_SRC} )
+OF_find_header_directories( HEADERS_LIBS ${PATH_LIBS} )
+
 include_directories( ${HEADERS_SOURCE} )
-
-# OF_find_header_directories( HEADERS_LIBS ${PATH_LIBS_ABSOLUTE} )
-# include_directories( ${HEADERS_LIBS} )
-
-# -----------------------------------------------------------------
-# ------------------------------ LIBS  ----------------------------
-# -----------------------------------------------------------------
+include_directories( ${HEADERS_LIBS} )
