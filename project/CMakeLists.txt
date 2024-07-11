@@ -1,61 +1,94 @@
-# ======================= ofxCMake Vers. 0.2 =============
-#  PUT THIS FILE INTO YOUR OPENFRAMEWORKS PROJECT FOLDER
+cmake_minimum_required(VERSION 3.5)
+cmake_policy(SET CMP0152 NEW)
 
-# ========================================================
-# ===================== CMake Settings ===================
-# ========================================================
-cmake_minimum_required( VERSION 3.3 )
-project( openframeworks )
+# THIS HAS TO COME BEFORE THE PROJECT LINE
+# from https://stackoverflow.com/questions/24380456/how-can-i-make-cmake-use-gcc-instead-of-clang-on-mac-os-x
+set(CMAKE_C_COMPILER "gcc")
+set(CMAKE_CXX_COMPILER "g++")
 
-# ========================================================
-# ===================== User Settings ====================
-# ========================================================
-# ---------------------- App name  -----------------------
-# Set the name of your app here:
-set( APP_NAME   myOfApp )
 
-# ------------------------ OF Path -----------------------
-#
-# This MUST be a RELATIVE path to OF!!!
-set( OF_DIRECTORY_BY_USER "../../.." )
+project(exampleApp VERSION 0.0.1 LANGUAGES C CXX)
+set(APP_NAME exampleApp)
 
-# --------------------- Source Files ---------------------
+# When it is Debug build, this adds "_debug" at the end of the name of all library files and executable
+# e.g. libofxOpenCv_debug.a
+set(CMAKE_DEBUG_POSTFIX "_debug")
 
-# Automatically add all sources in the src folder
-file(   GLOB_RECURSE
+# because of: https://github.com/openframeworks/openFrameworks/issues/6587
+#add_compile_definitions(OF_USING_STD_FS=0)
+#link_libraries(stdc++fs)
+set(CMAKE_CXX_FLAGS "-std=c++17")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_OSX_ARCHITECTURES "x86_64")
+
+# Local ofxCMake? (we have to use file() command to set absolute path)
+#set( ADDON_REL "../local_addons")
+#file( REAL_PATH ${ADDON_REL}/ofxCMake OFX_CMAKE_PATH)
+
+# Global ofxCMake?
+set(ADDON_REL "../../addons")
+set(${ADDON_REL}/ofxCMake OFX_CMAKE_PATH)
+file(REAL_PATH ${ADDON_REL}/ofxCMake OFX_CMAKE_PATH)
+
+include(${OFX_CMAKE_PATH}/modules/addOnsMacros.cmake)
+
+
+file(GLOB_RECURSE
         APP_SRC
         "src/*.cpp"
-        )
+)
 
-set( ${APP_NAME}_SOURCE_FILES
-        ${APP_SRC} )
+set(${APP_NAME}_SOURCE_FILES ${APP_SRC})
 
 
 # ------------------------ AddOns  -----------------------
-
-# Uncomment this entry to activate addOns. See the
-# project's readme.md for more information.
-
-# set( OFX_ADDONS_ACTIVE
-#         ofxOpenCv
-#         )
+set(OFX_ADDONS_ACTIVE   ofxOpenCv
+                        ofxCv
+                        ofxImGui
+                        )
 
 
-# -----------------------Custom Libs  --------------------
+#
+# Global Addons
+#
+# Must be a RELATIVE path to OF!!! 
+# Edit "../../../" to match your oF top directory
+set(OF_DIRECTORY_BY_USER "../../")
+file(REAL_PATH ${OF_DIRECTORY_BY_USER}/addons ADDON_DIR)
 
-# If you need to link against additional libraries, add
-# them here:
 
-# set( USER_LIBS
-#      your/lib/path/lib.a
-#      )
+#
+# How to use ${COMPILE_ADDON} flag
+#
+# 1. Build project with set(COMPILE_ADDON TRUE), for both of Debug and Release build
+# 2. Use set(COMPILE_ADDON FALSE) to skip compiling addons.
+#    This will skip compile and link compiled lib files (e.g. libofxOpenCv.a)
+#    Also, source files won't be visible in Clion's project tree
+# 3. If you change addon code, or want to edit addon code frequently, do not forget set(COMPILE_ADDON TRUE) again.
+#
+# Currently ${COMPILE_ADDON} flag only supports ofxOpenCv, ofxCv, and ofxImGui
+# To use same compile skip feature for your addon,
+# please refer to ofxOpenCv.cmake and modify your .cmake
+set(COMPILE_ADDON TRUE)
+include(${OFX_CMAKE_PATH}/addOns/internal/ofxOpenCv.cmake)
+include(${OFX_CMAKE_PATH}/addOns/external/ofxCv.cmake)
 
-# Use this call to add extra include directories:
+#
+# Local Addons
+#
+file(REAL_PATH ${ADDON_REL} ADDON_DIR)
+include(${OFX_CMAKE_PATH}/addOns/external/ofxCereal.cmake)
 
-#include_directories("include/myIncludeFolder")
+set(COMPILE_ADDON TRUE)
+include(${OFX_CMAKE_PATH}/addOns/external/ofxImGui.cmake)
 
-# =========================================================================
-# ============================== OpenFrameworks ===========================
-# =========================================================================
-include( ${OF_DIRECTORY_BY_USER}/addons/ofxCMake/modules/main.cmake )
-# =========================================================================
+
+#
+# ${COMPILE_OF} flag
+#
+# Same compile skip mechanism is applied to oF itself, but with ${COMPILE_OF} flag
+set(COMPILE_OF TRUE)
+include(${OFX_CMAKE_PATH}/modules/main.cmake)
+
+# If you need TBB, link it after app compile
+#target_link_libraries(${APP_NAME} freetype TBB::tbb)
