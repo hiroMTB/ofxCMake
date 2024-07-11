@@ -1,6 +1,36 @@
+# This is a folk of folk of folk
+- [peterkolski/ofxCMake](https://github.com/peterkolski/ofxCMake)
+- [mursisoy/ofxCMake](https://github.com/mursisoy/ofxCMake)
+- [neilmendoza/ofxCMake](https://github.com/neilmendoza/ofxCMake)
+
+
+# This update includes ...
+- Local addons support: 
+	- allows using local_addons
+	- allows using global addons alongside local_addons
+	- locates ofxCmake within /local_addons directory
+- Debug/Release build Separation:
+	- debug build now appends ```_debug``` to the end of the all lib files and executable.
+	- No more recompile when switchin between debug/release mode!
+- Skip compilation:
+	- skips compiling oF library, link it instead
+	- skips compiling addons, link it instead
+	- this also solves chaos in Clion's project tree by hiding unnecessary files
+	- Currently it only supports ofxCv, ofxOpenCv, ofxImGui, but you can modify your addon. See ofxCv.cmake
+- More addons!
+	- see /addOns/external folder
+- Tested on ..
+	- latest oF (July 2024)
+	- macOS (Primarty platform)
+	- Ubuntu (limited recent testing)
+- How to start
+	- use updated /project/CMakeLists.txt
+- Done by 
+	- [saynono](https://github.com/saynono) + [hiroMTB](https://github.com/hiroMTB)
+
 ![ofxCMake Logo](ofxCMake_Logo.jpg)
 
-# CMake for OpenFrameworks [Vers. 0.2]
+# CMake for OpenFrameworks [Vers. 0.3]
 ofxCMake enables you to easily compile [OpenFrameworks](http://openframeworks.cc) projects using [CMake](https://cmake.org). The primary goal for its creation was to enable the use of Jetbrains' [CLion](https://www.jetbrains.com/clion/) in OF application development, but it should work in any other IDE that supports CMake, as well as in the command line.
 
 This fork was originally created to give [almul0's fork](https://github.com/almul0/ofxCMake) of BuildPeter's [ofxCMake](https://github.com/BildPeter/ofxCMake) compatibility with OpenFrameworks 0.10.0, but it has evolved to work in a slightly different way than both.
