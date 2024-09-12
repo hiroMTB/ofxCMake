@@ -19,7 +19,7 @@ set(CMAKE_DEBUG_POSTFIX "_debug")
 #link_libraries(stdc++fs)
 set(CMAKE_CXX_FLAGS "-std=c++17")
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_OSX_ARCHITECTURES "x86_64")
+set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64")
 
 # Local ofxCMake? (we have to use file() command to set absolute path)
 #set( ADDON_REL "../local_addons")

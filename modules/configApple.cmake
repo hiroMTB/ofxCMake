@@ -9,7 +9,7 @@ set(CMAKE_CXX_FLAGS "-std=c++17 -stdlib=libc++ -D__MACOSX_CORE__") # Removed "-s
 set_source_files_properties(${OF_SOURCE_FILES} PROPERTIES COMPILE_FLAGS "-x objective-c++")
 
 #set(CMAKE_OSX_ARCHITECTURES i386)
-set(CMAKE_OSX_ARCHITECTURES x86_64)
+set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64")
 add_compile_options(-Wno-deprecated-declarations)
 
 find_program(CCACHE_FOUND ccache)
